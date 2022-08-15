@@ -178,9 +178,9 @@ INSERT INTO `product` VALUES (32, 22, '春秋季节卫衣是首选，卫衣一�
 DROP TABLE IF EXISTS `brand`;
 CREATE TABLE `brand`  (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `reason` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `people` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `reason` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `people` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `recommended_flag` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;

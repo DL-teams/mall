@@ -1,6 +1,7 @@
 package priv.jesse.mall.web.user;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class BrandController {
     @GetMapping("/get.do")
     @ResponseBody
     public ResultBean<List<Brand>> get() {
-        List<Brand> brandList = brandService.findAll();
+        List<Brand> brandList = brandService.findAll().stream().filter(Brand::getRecommendedFlag).collect(Collectors.toList());
         return new ResultBean<>(brandList);
     }
 }

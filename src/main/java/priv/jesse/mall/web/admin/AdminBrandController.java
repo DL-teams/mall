@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -81,7 +84,7 @@ public class AdminBrandController {
         brand.setName(name);
         brand.setReason(reason);
         brand.setPeople(people);
-        brand.setRecommendedFlag(recommendedFlag);
+        brand.setRecommendedFlag(recommendedFlag != null && recommendedFlag);
         Long id = brandService.create(brand);
         if (id <= 0) {
             request.setAttribute("message", "添加失败！");
