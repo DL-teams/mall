@@ -100,7 +100,6 @@
             contents = "";
             //加载分类
             $.get("announcement/get.do", function (data) {
-                console.log(data)
                 if (data.state == 0) {
                     for (var i =0;i<data.data.length;i++){
                         var tr = '<div>'+data.data[i].announcementId+':'+data.data[i].announcementValue+'</div>'
@@ -120,11 +119,9 @@
 
         var brand = "";
         $("#brand").click(function (){
-            console.log(1111)
             brand = "";
             //加载分类
             $.get("brand/get.do", function (data) {
-                console.log(data)
                 if (data.state == 0) {
                     for (var i =0;i<data.data.length;i++){
                         var tr =
