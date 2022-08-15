@@ -11,7 +11,7 @@ import priv.jesse.mall.entity.pojo.ResultBean;
 import priv.jesse.mall.service.BrandService;
 
 @Controller
-@RequestMapping("brand")
+@RequestMapping("/brand")
 public class BrandController {
 
     @Autowired

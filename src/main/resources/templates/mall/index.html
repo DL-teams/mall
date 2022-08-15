@@ -38,7 +38,6 @@
         </div>
         <a class="more" href="javascript: more();">点击加载更多</a>
     </div>
-    <div id="announcement"></div>
     <script>
         //            <![CDATA[
         var pageNo = 0;
@@ -117,7 +116,35 @@
                     ,btn: ['确定']
                 });
             });
+        })
 
+        var brand = "";
+        $("#brand").click(function (){
+            console.log(1111)
+            brand = "";
+            //加载分类
+            $.get("brand/get.do", function (data) {
+                console.log(data)
+                if (data.state == 0) {
+                    for (var i =0;i<data.data.length;i++){
+                        var tr =
+                            '<dl>'+
+                                '<dt>'+data.data[i].id + ':' + data.data[i].name+'</dt>'+
+                                '<dd style="margin-left: 25px">'+data.data[i].reason+'</dd>'+
+                                '<dd style="margin-left: 25px">'+data.data[i].people+'</dd>'+
+                            '</dl>'
+                        brand+=tr;
+                    }
+                } else {
+                    alert(data.message);
+                }
+                layer.open({
+                    content: brand,
+                    title: "推荐品牌",
+                    area: ['500px', '360px']
+                    ,btn: ['确定']
+                });
+            });
         })
         //            ]]>
     </script>

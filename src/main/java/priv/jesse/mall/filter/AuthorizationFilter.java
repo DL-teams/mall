@@ -68,6 +68,7 @@ public class AuthorizationFilter implements Filter {
                     || path.endsWith("classification/list.do")
                     || path.contains("product")
                     || path.contains("announcement")
+                    || path.contains("brand")
                     || path.contains("/mall/h2-console")) {
                 chain.doFilter(request, response);
             } else {
