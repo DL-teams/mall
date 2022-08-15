@@ -173,6 +173,19 @@ INSERT INTO `product` VALUES (31, 19, '手工编织本来就是一种靠智慧�
 INSERT INTO `product` VALUES (32, 22, '春秋季节卫衣是首选，卫衣一般显得宽大舒适，是休闲类服饰中很受欢迎的服饰。时尚：卫衣能兼顾时尚性与功能性。由于融合舒适与时尚，卫衣成了各年龄段运动者的首选装备。个性：卫衣的涂鸦设计彰显了年轻的个性，舒适的穿着是休闲运动的最佳装备。百搭：卫衣配搭简单，运动裤，牛仔裤，还是裙子都可以搭出轻松的时尚感。', '/mall/admin/product/img/B3D9C8BD2090C01B0F6415EE0EE900.png', 1, 4545, '2022-08-01 14:23:00', 999, '卫衣');
 
 -- ----------------------------
+-- Table structure for brand
+-- ----------------------------
+DROP TABLE IF EXISTS `brand`;
+CREATE TABLE `brand`  (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `reason` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `people` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `is_recommended` tinyint(1) NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
