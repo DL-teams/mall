@@ -70,18 +70,18 @@ public class AdminBrandController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/add.do")
-    public void add(String brandName,
+    public void add(String name,
                     String reason,
                     String people,
-                    Boolean isRecommended,
+                    Boolean recommended,
                     HttpServletRequest request,
                     HttpServletResponse response) throws Exception {
 
         Brand brand = new Brand();
-        brand.setName(brandName);
+        brand.setName(name);
         brand.setReason(reason);
         brand.setPeople(people);
-        brand.setIsRecommended(isRecommended);
+        brand.setRecommended(recommended);
         Long id = brandService.create(brand);
         if (id <= 0) {
             request.setAttribute("message", "添加失败！");
@@ -94,17 +94,17 @@ public class AdminBrandController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/update.do")
     public void update(Long id,
-                       String brandName,
+                       String name,
                        String reason,
                        String people,
-                       Boolean isRecommended,
+                       Boolean recommended,
                        HttpServletRequest request,
                        HttpServletResponse response) throws Exception {
         Brand brand = brandService.findById(id);
-        brand.setName(brandName);
+        brand.setName(name);
         brand.setReason(reason);
         brand.setPeople(people);
-        brand.setIsRecommended(isRecommended);
+        brand.setRecommended(recommended);
 
         Boolean flag = false;
         try {
