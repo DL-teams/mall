@@ -32,7 +32,7 @@ public class Brand {
     private String people;
 
     @Column
-    private Boolean recommended;
+    private Boolean recommendedFlag;
 
     public Long getId() {
         return id;
@@ -66,11 +66,11 @@ public class Brand {
         this.people = people;
     }
 
-    public Boolean getRecommended() {
-        return recommended;
+    public Boolean getRecommendedFlag() {
+        return recommendedFlag;
     }
 
-    public void setRecommended(Boolean recommended) {
-        this.recommended = recommended;
+    public void setRecommendedFlag(Boolean recommendedFlag) {
+        this.recommendedFlag = recommendedFlag;
     }
 }

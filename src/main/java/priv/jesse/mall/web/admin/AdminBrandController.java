@@ -73,7 +73,7 @@ public class AdminBrandController {
     public void add(String name,
                     String reason,
                     String people,
-                    Boolean recommended,
+                    Boolean recommendedFlag,
                     HttpServletRequest request,
                     HttpServletResponse response) throws Exception {
 
@@ -81,7 +81,7 @@ public class AdminBrandController {
         brand.setName(name);
         brand.setReason(reason);
         brand.setPeople(people);
-        brand.setRecommended(recommended);
+        brand.setRecommendedFlag(recommendedFlag);
         Long id = brandService.create(brand);
         if (id <= 0) {
             request.setAttribute("message", "添加失败！");
@@ -97,14 +97,14 @@ public class AdminBrandController {
                        String name,
                        String reason,
                        String people,
-                       Boolean recommended,
+                       Boolean recommendedFlag,
                        HttpServletRequest request,
                        HttpServletResponse response) throws Exception {
         Brand brand = brandService.findById(id);
         brand.setName(name);
         brand.setReason(reason);
         brand.setPeople(people);
-        brand.setRecommended(recommended);
+        brand.setRecommendedFlag(recommendedFlag);
 
         Boolean flag = false;
         try {

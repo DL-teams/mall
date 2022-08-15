@@ -181,7 +181,7 @@ CREATE TABLE `brand`  (
   `name` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `reason` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `people` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `is_recommended` tinyint(1) NULL DEFAULT 0,
+  `recommended_flag` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
