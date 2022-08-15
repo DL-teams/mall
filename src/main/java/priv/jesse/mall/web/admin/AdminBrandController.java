@@ -107,7 +107,7 @@ public class AdminBrandController {
         brand.setName(name);
         brand.setReason(reason);
         brand.setPeople(people);
-        brand.setRecommendedFlag(recommendedFlag);
+        brand.setRecommendedFlag(recommendedFlag != null && recommendedFlag);
 
         Boolean flag = false;
         try {
