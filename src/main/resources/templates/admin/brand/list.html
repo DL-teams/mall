@@ -128,7 +128,7 @@
             tr.append($("<td></td>").text(data[i].name));
             tr.append($("<td></td>").text(data[i].reason));
             tr.append($("<td></td>").text(data[i].people));
-            tr.append($("<td></td>").text(data[i].recommendedFlag));
+            tr.append($("<td></td>").text(data[i].recommendedFlag ? '是':'否'));
             tr.append($("<td></td>")
                 .append($('<button style="margin-right:20px;" class="btn mini green" onclick="edit(' + data[i].id + ')"><i class="fa fa-edit"></i> 编辑</button>'))
                 .append($('<button class="btn mini red" onclick="del(' + (data[i].id) + ',this)"><i class="fa fa-trash"></i> 删除</button>')));
