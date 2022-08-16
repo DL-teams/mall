@@ -192,7 +192,7 @@
             </li>
 
 
-            <li class="" id="category">
+            <li class="" id="category" >
 
                 <a href="#">
 
@@ -412,10 +412,17 @@
     });
 
     function changePage(page) {
+        // 删除class 属性
         $(".page-sidebar-menu li").removeClass("active");
         if ('categorySec' == page) {
+            // <a id="category" class="active"></a><span class="selected"></span>
+            // 添加class="active" 给id为category 挺假一个class="active"并查找它下的第0个啊标签，拼接'<span class="selected"></span>'
+            // addClass() 方法向被选元素添加一个或多个类名。
+            //find() 方法返回被选元素的后代元素。
             $("#category").addClass("active").find("a").eq(0).append($('<span class="selected"></span>'));
             $("#categorysec").addClass("active");
+            // attr(属性名)为获取这个属性中的值
+            // attr(属性名, 设置的内容) 为这个属性中的设置值
             $("#mainFrame").attr("src", "classification/toList.html?type=2");
             return;
         } else if ('category' == page) {
@@ -423,9 +430,10 @@
             $("#category_1").addClass("active");
             $("#mainFrame").attr("src", "classification/toList.html?type=1");
             return;
-        } else {
-            $("#" + page).addClass("active").find("a").eq(0).append($('<span class="selected"></span>'));
         }
+        // id选择器 jquery 选择id为变量page
+        // .是class选择器 #是id选择器
+        $("#" + page).addClass("active").find("a").eq(0).append($('<span class="selected"></span>'));
         $("#mainFrame").attr("src", page + "/toList.html");
     }
 

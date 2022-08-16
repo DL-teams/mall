@@ -1,10 +1,12 @@
 package priv.jesse.mall.web.admin;
 
+import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.util.ObjectUtils;
 import priv.jesse.mall.entity.Announcement;
 import priv.jesse.mall.entity.pojo.ResultBean;
 import priv.jesse.mall.service.AnnouncementService;
@@ -37,6 +39,11 @@ public class AdminAnnouncementController {
                                                       @RequestParam(value = "pageSize", defaultValue = "15") int pageSize) {
         Pageable pageable = new PageRequest(pageindex, pageSize, null);
         List<Announcement> list = announcementService.findAll(pageable).getContent();
+        if (list == null) {
+            // 异常调用 ResultBean(Throwable a)构造函数
+            return new ResultBean<>(new RuntimeException("数据不能为空"));
+        }
+        // 调用ResultBean(T data)构造函数
         return new ResultBean<>(list);
     }
 

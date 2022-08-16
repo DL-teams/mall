@@ -87,9 +87,11 @@
                         </div>
                     </div>
 
+<!--                    是通过bootStrap 底层封装实现-->
                     <div class="control-group">
                         <label class="control-label">商品图片：</label>
                         <div class="controls">
+<!--                            data-provides = 数据提供-->
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
                                     <img src="" alt=""/>
@@ -102,6 +104,7 @@
 												<span class="fileupload-exists">换一张</span>
 												<input name="image" type="file" class="default"/>
 											</span>
+<!--                                   data-dismiss = 数据关闭 -->
                                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
                                 </div>
                             </div>
@@ -176,10 +179,13 @@
             error: function (request) {
                 alert("Connection error");
             },
+            // 成功回调函数
             success: function (result) {
+                // 成功
                 if (result.state == 0) {
                     alert("增加成功！");
                 } else {
+                    // 弹出后端封装的errorMessage
                     alert(result.message);
                 }
             }

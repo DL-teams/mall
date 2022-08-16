@@ -57,6 +57,8 @@ public class AdminProductController {
     public ResultBean<List<Product>> listProduct(int pageindex,
                                                  @RequestParam(value = "pageSize", defaultValue = "15") int pageSize) {
         Pageable pageable = new PageRequest(pageindex, pageSize, null);
+        // 根据你查询条件查询出有页面要显示哪些数据，通过getContent获取
+        // [{id=1, title="裤子"},{id=2, title="衣服"}]
         List<Product> list = productService.findAll(pageable).getContent();
         return new ResultBean<>(list);
     }
@@ -64,7 +66,14 @@ public class AdminProductController {
     @ResponseBody
     @RequestMapping("/getTotal")
     public ResultBean<Integer> getTotal() {
+        // PageRequest()
+        // 参数1 是pageNumber 第几页
+        // 参数2 是pageSize 一页显示几条
+        // 是否排序
         Pageable pageable = new PageRequest(1, 15, null);
+        // 根据你查询条件计算出一共有几页 通过getTotalPages获取
+        // 根据你查询条件计算出数据库中一共有多少条数据 通过getTotalElements获取
+        // 根据你查询条件查询出有哪些内容，通过getContent获取
         int total = (int) productService.findAll(pageable).getTotalElements();
         return new ResultBean<>(total);
     }

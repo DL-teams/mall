@@ -47,14 +47,14 @@
             <div class="portlet-body">
                 <table id="productTable" class="table table-advance table-hover">
                     <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>商品图片</th>
-                        <th>商品名称</th>
-                        <th>商品价格</th>
-                        <th>热门商品</th>
-                        <th>操作</th>
-                    </tr>
+                        <tr>
+                            <th>序号</th>
+                            <th>商品图片</th>
+                            <th>商品名称</th>
+                            <th>商品价格</th>
+                            <th>热门商品</th>
+                            <th>操作</th>
+                        </tr>
                     </thead>
                     <tbody>
 
@@ -115,12 +115,16 @@
         $.ajax({
             url: "getTotal.do",
             type: "get",
+            // 请求成功回调事件，result = 后端的resultBean
             success: function (result) {
                 if (result.state == 0) {
+                    // pagetotal = 总条数
                     pagetotal = result.data;
+                    // pagination 是jquery封装分页对象结构 https://www.cnblogs.com/loong-hon/p/9340064.html
                     $("#Pagination").pagination(pagetotal, {
-                        num_edge_entries: 1, //边缘页数
+                        num_edge_entries: 1, //边缘条目书
                         num_display_entries: 5, //主体页数
+                        // 回调pageselectCallback
                         callback: pageselectCallback,
                         items_per_page: 15, //每页显示7项
                         prev_text: "前一页",
@@ -133,14 +137,18 @@
         });
     });
 
-    function pageselectCallback(page_index, jq) {
+    // page_index = pageNumber
+    function pageselectCallback(page_index) {
         $.ajax({
             type: "get",
             url: "list.do?pageindex=" + page_index,
+            // result = resultBean
             success: function (result) {
                 if (result.state == 0) {
+                    // 成功渲染html页面
                     showList(result.data);
                 } else {
+                    // 弹出errorMessage
                     alert(result.message);
                 }
             }
@@ -153,7 +161,9 @@
         }
         //清空表
         var tbody = $("#productTable tbody").eq(0);
+        // 設定匹配元素的HTML內容 (有參數)
         tbody.html("");
+        // data从后端返回的数据
         for (var i = 0; i < data.length; i++) {
             var tr = $("<tr style='display:none;height:50px;'></tr>");
             tr.append($("<td></td>").text(data[i].id));

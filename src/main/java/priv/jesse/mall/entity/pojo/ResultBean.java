@@ -42,7 +42,9 @@ public class ResultBean<T> implements Serializable {
     }
 
     public ResultBean(T data) {
+        // 调用父构造函数
         super();
+        // this.data 复制
         this.data = data;
     }
 
